@@ -25,7 +25,7 @@ context('Login', () => {
     })
 
     it('Logs in with Newly Created User', () => {
-        cy.wait(10000)
+        cy.wait(4000) //Automation is too fast for Backend to recognize new user//
         cy.get('.homepage-navigation-links-wrapper > .ng-scope').click()
         cy.get('.auth-form > .ng-valid-email').type(uniqueEmail)
         cy.get('.input.ng-scope').type('Test123!')
