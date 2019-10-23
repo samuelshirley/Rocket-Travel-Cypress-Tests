@@ -11,7 +11,6 @@ context('Search', () => {
         
     })
 
-
     it('enters New York into location input', () => {
         cy.get('.location-search-container > .rm-input-base').click()
         cy.wait(500)
