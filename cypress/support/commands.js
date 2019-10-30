@@ -13,6 +13,13 @@
 // Cypress.Commands.add("login", (email, password) => { ... })
 //
 //
+Cypress.Commands.add("openPage", (email, password) => {
+     cy.visit('/')
+    cy.setCookie('EMAIL_SIGNUP', 'true')
+    cy.wait(2000) 
+})
+
+
 // -- This is a child command --
 // Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
 //

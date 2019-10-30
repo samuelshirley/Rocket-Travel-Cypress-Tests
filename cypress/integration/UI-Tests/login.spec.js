@@ -1,23 +1,35 @@
 /// <reference types="Cypress" />
 
+import Login from "../page-objects/login"
 
 
-context('Login', () => {
-    
-
-    beforeEach(() => {
-        cy.visit('https://www.rocketmiles.com/')
-        cy.setCookie('EMAIL_SIGNUP', 'true')
-        cy.wait(2000)
+    describe('Login', () => {
+        beforeEach(function () {
+          cy.fixture('data')
+            .then((data) => {
+              this.data = data
+            })
+            cy.fixture('secrets')
+            .then((secrets) => {
+              this.secrets = secrets
+            })
+            cy.openPage()
+        
     })
 
-    it('Logs in a user', () => {
-        cy.get('.homepage-navigation-links-wrapper > .ng-scope').click()
-        cy.get('.auth-form > .ng-valid-email').type('samuelashirley@gmail.com')
-        cy.get('.input.ng-scope').type('Test123!')
-        cy.get('.auth-form > .rm-btn-orange').click()
-        cy.get('.btn-account > .hidden-xs').click()
-        cy.get('.content-container > .content > :nth-child(1)').contains('Profile & Account')
+    it('Logs in a user', function () {
+        const login = new Login();
+        login.getSignInButton().click()
+        login.getHeaderText().should('contain','Sign In')
+        login.getEmailField().type(this.secrets.email).should('have.value', this.secrets.email)
+        login.getPasswordField().type(this.secrets.password).should('have.value', this.secrets.password)
+        login.getSubmitButton().should('have.value', 'Sign In').click()
+        login.getAccountButton().should('contain', 'Account').click()
+        login.getAccountHeader().should('contain', 'Profile & Account')
+        login.getFirstName().should('have.value', this.data.firstName)
+        login.getLastName().should('have.value', this.data.lastName)
+        login.getUserName().should('have.value', this.data.getUserName)
+       
     })
 
 })
