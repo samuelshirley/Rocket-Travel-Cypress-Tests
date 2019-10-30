@@ -41,6 +41,38 @@ class Login {
     getPromotionsCheckBox() {
         return cy.get(':nth-child(1) > label > .box > .check')
     }
+
+    getCityInput(){
+        return cy.get('.location-search-container > .rm-input-base')
+    }
+
+    getRewardsInput(){
+        return cy.get('.program-autosuggest-container > .rm-input-base')
+    }
+
+    getHeadline() {
+        return cy.get('.homepage-headline')
+    }
+
+    getNumberOfGuests(){
+        return cy.get('.adults > .rm-select-base > .btn-group > .btn > .value')
+    }
+
+    getSerchPropertiesButton(){
+        return cy.get('.rm-btn-orange')
+    }
+
+    getRoomsDropDown(){
+        return cy.get('.rooms > .rm-select-base > .btn-group > .btn')
+    }
+
+    getLocationInput() {
+        return cy.get('.location-search-container > .rm-input-base')
+    }
+
+    getSignUpButton() {
+        return cy.get('.homepage-navigation-links-wrapper > .ng-scope')
+    }
 }
 
 export default Login;

@@ -1,18 +1,17 @@
 /// <reference types="Cypress" />
-
-
+import Home from '../page-objects/home'
 
 context('Search', () => {
     
 
     beforeEach(() => {
-        cy.visit('https://www.rocketmiles.com/')
-        cy.setCookie('EMAIL_SIGNUP', 'true')
-        cy.wait(2000)
+        cy.openPage()
     })
 
-    it('Fills out search with New York and Amazon Rewards', () => {
-        cy.get('.location-search-container > .rm-input-base')
+    it('Fills out search with New York and Amazon Rewards', function() {
+        const home = new Home()
+        home.getHeadline().should('contain', 'Book hotels. Earn thousands of miles or points per night.')
+        home.getCityInput()
             .click()
             .wait(1000)
             .type('{downarrow}')
@@ -20,10 +19,17 @@ context('Search', () => {
             .type('{downarrow}')
             .wait(500)
             .type('{enter}')
-        cy.get('.program-autosuggest-container > .rm-input-base')
+            .should('have.value', 'New York, NY')
+            
+        home.getRewardsInput()
             .click()
             .type('{downarrow}')
             .type('{enter}')
-            cy.get('.rm-btn-orange > .ng-scope').click()
+            .should('have.value', 'Amazon.com Gift Card')
+        home.getNumberOfGuests().should('have.text', '2 Guests')
+        home.getRoomsDropDown().should('have.text', '1 Room')
+        home.getSerchPropertiesButton().click()
+        home.getLocationInput().should('have.value', 'New York, NY')
+        
     })
 })

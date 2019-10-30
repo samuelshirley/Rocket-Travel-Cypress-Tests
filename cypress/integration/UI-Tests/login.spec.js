@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-import Login from "../page-objects/login"
+import Home from "../page-objects/home"
 
 
     describe('Login', () => {
@@ -18,18 +18,18 @@ import Login from "../page-objects/login"
     })
 
     it('Logs in a user', function () {
-        const login = new Login();
-        login.getSignInButton().click()
-        login.getHeaderText().should('contain','Sign In')
-        login.getEmailField().type(this.secrets.email).should('have.value', this.secrets.email)
-        login.getPasswordField().type(this.secrets.password).should('have.value', this.secrets.password)
-        login.getSubmitButton().should('have.value', 'Sign In').click()
-        login.getAccountButton().should('contain', 'Account').click()
-        login.getAccountHeader().should('contain', 'Profile & Account')
-        login.getFirstName().should('have.value', this.data.firstName)
-        login.getLastName().should('have.value', this.data.lastName)
-        login.getUserName().should('have.value', this.data.userName)
-        login.getPromotionsCheckBox().should('not.be', 'checked')
+        const home = new Home();
+        home.getSignInButton().click()
+        home.getHeaderText().should('contain','Sign In')
+        home.getEmailField().type(this.secrets.email).should('have.value', this.secrets.email)
+        home.getPasswordField().type(this.secrets.password).should('have.value', this.secrets.password)
+        home.getSubmitButton().should('have.value', 'Sign In').click()
+        home.getAccountButton().should('contain', 'Account').click()
+        home.getAccountHeader().should('contain', 'Profile & Account')
+        home.getFirstName().should('have.value', this.data.firstName)
+        home.getLastName().should('have.value', this.data.lastName)
+        home.getUserName().should('have.value', this.data.userName)
+        home.getPromotionsCheckBox().should('not.be', 'checked')
     })
 
 })
