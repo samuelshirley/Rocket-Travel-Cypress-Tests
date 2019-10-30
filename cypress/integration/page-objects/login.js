@@ -35,7 +35,7 @@ class Login {
     }
 
     getUserName() {
-        return cy.get('#userName')
+        return cy.get('#username')
     }
 }
 

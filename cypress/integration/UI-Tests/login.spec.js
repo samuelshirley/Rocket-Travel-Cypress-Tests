@@ -28,8 +28,7 @@ import Login from "../page-objects/login"
         login.getAccountHeader().should('contain', 'Profile & Account')
         login.getFirstName().should('have.value', this.data.firstName)
         login.getLastName().should('have.value', this.data.lastName)
-        login.getUserName().should('have.value', this.data.getUserName)
-       
+        login.getUserName().should('have.value', this.data.userName)
     })
 
 })
