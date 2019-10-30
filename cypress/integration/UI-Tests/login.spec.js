@@ -29,6 +29,7 @@ import Login from "../page-objects/login"
         login.getFirstName().should('have.value', this.data.firstName)
         login.getLastName().should('have.value', this.data.lastName)
         login.getUserName().should('have.value', this.data.userName)
+        login.getPromotionsCheckBox().should('not.be', 'checked')
     })
 
 })

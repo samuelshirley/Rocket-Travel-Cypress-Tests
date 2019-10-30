@@ -37,6 +37,10 @@ class Login {
     getUserName() {
         return cy.get('#username')
     }
+
+    getPromotionsCheckBox() {
+        return cy.get(':nth-child(1) > label > .box > .check')
+    }
 }
 
 export default Login;
